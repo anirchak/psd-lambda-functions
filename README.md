@@ -21,6 +21,12 @@ This is Burning Glass. Specifically, we use the Labour Insight dashboard made by
 2. Time Series Analysis
     - You can find this at Create Reports > Focus on - Time Series Analysis
     - We use this report to get the number of job postings on a monthly basis for each SSOC that we're tracking. These numbers give us a sense of the industry's demand for each occupation.
+  
+### US BLS
+Also known as the United States Bureau of Labor Statistics, we are looking into the Occupation Employment and Wage Statistics section. We are examining the sectoral breakdown of Tech Employment by Occupation, with the following policy questions in mind:
+
+1.	Demand/Vacancies for tech occupations with respect to US
+2.	Which sectors have the highest employment of tech occupations
 
 ## Data Extraction + Preparation Pipeline
 This section outlines the existing + planned pipeline to automatically extract and prepare the above 2 data sources for visualization in Tableau.
@@ -33,6 +39,11 @@ This section outlines the existing + planned pipeline to automatically extract a
 
 ### BG
 1. A Workato recipe will be triggered on a schedule. This recipe will trigger an AWS Lambda function that will run a Selenium script that scrapes the BG data.
+2. The BG data gets uploaded onto AWS S3.
+3. Another Workato recipe gets triggered when the new file gets uploaded onto S3. It will be automatically sent as an attachment to your email<sup>5</sup>.
+
+### US BLS
+1. A Workato recipe will be triggered on a schedule. This recipe will trigger an AWS Lambda function that will run a Selenium script that scrapes the US BLS data.
 2. The BG data gets uploaded onto AWS S3.
 3. Another Workato recipe gets triggered when the new file gets uploaded onto S3. It will be automatically sent as an attachment to your email<sup>5</sup>.
 
